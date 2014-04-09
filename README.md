@@ -8,6 +8,10 @@ DecibelMeter allows you to monitor the noise level using your device's microphon
 
 I have only tested this in Chrome for Windows and Chrome for Mac.
 
+### Live Example
+
+You can try the DecibelMeter now: [DecibelMeter example](http://jasonpecor.com/code/DecibelMeter/example/example.html)
+
 ### Usage Examples
 
 Create a decibel meter
