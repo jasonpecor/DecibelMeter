@@ -2,7 +2,7 @@
 
 ## Monitor dB Levels Using HTML5 Audio API
 
-DecibelMeter allows you to monitor the noise level using your device's microphone(s) from within a web page or node-webkit application.
+DecibelMeter allows you to monitor the noise level using your device's microphone(s) from within a web page or [node-webkit](https://github.com/rogerwang/node-webkit) application.
 
 ### Browser Support
 
