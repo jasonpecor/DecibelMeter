@@ -57,6 +57,16 @@ Disconnect from the audio source entirely
 meter.disconnect();
 ```
 
+Multiple meters on one page
+```javascript
+var meter1 = DecimelMeter.create('meter-1');
+var meter2 = DecimelMeter.create('meter-2');
+
+var meters = DecimelMeter.getMeters(); // all meters created on this page
+
+meter1 === DecimelMeter.getMeterById('meter-1'); // true
+```
+
 
 
 
