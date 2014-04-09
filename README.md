@@ -4,6 +4,10 @@
 
 DecibelMeter allows you to monitor the noise level using your device's microphone(s) from within a web page or node-webkit application.
 
+### Browser Support
+
+I have only tested this in Chrome for Windows and Chrome for Mac.
+
 ### Usage Examples
 
 Create a decibel meter
@@ -34,12 +38,12 @@ meter.on('sample', function (dB, percent, value) {
 });
 ```
 
-Start listening with audio source
+Start listening to audio source
 ```javascript
 meter.listen(); // "sample" callback set above will now receive data
 ```
 
-Stop listening with audio source
+Stop listening to audio source
 ```javascript
 meter.stopListening();
 ```
