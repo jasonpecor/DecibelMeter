@@ -31,6 +31,11 @@ var DecibelMeter = ( function ( window, navigator, document, undefined ) {
 		return undefined;
 	}
 	
+	if (!window.MediaStreamTrack.getSources) {
+		throw new Error('DecibelMeter: MediaStreamTrack.getSources() not supported');
+		return undefined;
+	}
+	
 	var sources = [],
 		sourcesIndex = {},
 		sourcesReady = false;
