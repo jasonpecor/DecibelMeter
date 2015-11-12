@@ -46,14 +46,14 @@ var DecibelMeter = ( function ( window, navigator, document, undefined ) {
 				sources.push(source);
 				sourcesIndex[source.id] = source;
 			}
-			
-			sourcesReady = true;
-			
-			// let meters know that audio sources are ready now
-			
-			meters.forEach(function (meter) {
-				dispatch(meter, 'ready', [meter, sources]);
-			});
+		});
+		
+		sourcesReady = true;
+		
+		// let meters know that audio sources are ready now
+		
+		meters.forEach(function (meter) {
+			dispatch(meter, 'ready', [meter, sources]);
 		});
 	});
 	
