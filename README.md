@@ -10,7 +10,7 @@ I have only tested this in Chrome for Windows and Chrome for Mac.
 
 ### Live Example
 
-You can try the DecibelMeter now: [DecibelMeter example](http://jasonpecor.com/code/DecibelMeter/example/example.html)
+You can try the DecibelMeter now: [DecibelMeter example](https://www.jasonpecor.com/code/DecibelMeter/example/example.html)
 
 ### Usage Examples
 
