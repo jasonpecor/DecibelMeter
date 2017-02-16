@@ -26,35 +26,40 @@ var DecibelMeter = ( function ( window, navigator, document, undefined ) {
 	
 	// audio sources
 	
-	if (!window.MediaStreamTrack) {
-		throw new Error('DecibelMeter: MediaStreamTrack not supported');
+	if (!navigator.mediaDevices) {
+		throw new Error('DecibelMeter: mediaDevices not supported');
 		return undefined;
 	}
 	
-	if (!window.MediaStreamTrack.getSources) {
-		throw new Error('DecibelMeter: MediaStreamTrack.getSources() not supported');
+	if (!navigator.mediaDevices.enumerateDevices) {
+		throw new Error('DecibelMeter: mediaDevices.enumerateDevices() not supported');
 		return undefined;
 	}
 	
 	var sources = [],
 		sourcesIndex = {},
 		sourcesReady = false;
-	
-	MediaStreamTrack.getSources(function (srcs) {
-		srcs.forEach( function (source) {
-			if (source.kind === 'audio') {
-				sources.push(source);
-				sourcesIndex[source.id] = source;
-			}
-		});
-		
-		sourcesReady = true;
-		
-		// let meters know that audio sources are ready now
-		
-		meters.forEach(function (meter) {
-			dispatch(meter, 'ready', [meter, sources]);
-		});
+
+	navigator.mediaDevices.enumerateDevices()
+	.then(function(devices) {
+
+	  devices.forEach( function (source) {
+		  if (source.kind === 'audioinput') {
+			  sources.push(source);
+			  sourcesIndex[source.id] = source;
+		  }
+	  });
+
+	  sourcesReady = true;
+
+	  // let meters know that audio sources are ready now
+
+	  meters.forEach(function (meter) {
+		  dispatch(meter, 'ready', [meter, sources]);
+	  });
+	})
+	.catch(function(err) {
+	  console.log(err.name + ": " + err.message);
 	});
 	
 	
@@ -122,13 +127,13 @@ var DecibelMeter = ( function ( window, navigator, document, undefined ) {
 		this.connection = null;
 		this.connected = false;
 		this.handle = {
-			ready: 				opts.ready ? [opts.ready] : [],
-			sample: 			opts.sample ? [opts.sample] : [],
-			connect: 			opts.connect ? [opts.connect] : [],
-			disconnect: 		opts.disconnect ? [opts.disconnect] : [],
-			"source-change":	opts.sourceChange ? [opts.sourceChange] : [],
-			listen: 			opts.listen ? [opts.listen] : [],
-			"stop-listening": 	opts.stopListeing ? [opts.stopListening] : []
+			ready:              opts.ready ? [opts.ready] : [],
+			sample:             opts.sample ? [opts.sample] : [],
+			connect:            opts.connect ? [opts.connect] : [],
+			disconnect:         opts.disconnect ? [opts.disconnect] : [],
+			"source-change":    opts.sourceChange ? [opts.sourceChange] : [],
+			listen:             opts.listen ? [opts.listen] : [],
+			"stop-listening":   opts.stopListeing ? [opts.stopListening] : []
 		};
 		
 		this.startLoop();
