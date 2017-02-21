@@ -57,7 +57,6 @@ var DecibelMeter = ( function ( window, navigator, document, undefined ) {
 		});
 	}).catch(function(err) {
 		throw new Error('DecibelMeter: '+err.name + ' - ' + err.message);
-		console.log();
 	});	
 	
 	
