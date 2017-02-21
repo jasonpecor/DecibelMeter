@@ -44,7 +44,7 @@ var DecibelMeter = ( function ( window, navigator, document, undefined ) {
 		devices.forEach( function (source) {
 			if (source.kind === 'audioinput') {
 				sources.push(source);
-				sourcesIndex[source.id] = source;
+				sourcesIndex[source.deviceId] = source;
 			}
 		});
 		
