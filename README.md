@@ -6,7 +6,7 @@ DecibelMeter allows you to monitor the noise level using your device's microphon
 
 ```javascript
 // connect to first audio input device found
-new DecibelMeter.listenTo(0, (dB, percent, value) => console.log(dB))
+new DecibelMeter().listenTo(0, (dB, percent, value) => console.log(dB))
 ```
 
 ### Browser Support
