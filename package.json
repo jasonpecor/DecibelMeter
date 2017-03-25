@@ -1,0 +1,43 @@
+{
+  "name": "decibel-meter",
+  "version": "2.0.0",
+  "description": "Decibel meter for detecting noise levels from microphone via Web Audio API",
+  "main": "dist/decibel-meter.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"dist": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jasonpecor/DecibelMeter.git"
+  },
+  "keywords": [
+    "decibel",
+    "meter",
+    "audio",
+    "microphone"
+  ],
+  "author": "Jason Pecor",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/jasonpecor/DecibelMeter/issues"
+  },
+  "homepage": "https://github.com/jasonpecor/DecibelMeter#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "babel-register": "^6.24.0",
+    "babel-tape-runner": "^2.0.1",
+    "blue-tape": "^1.0.0",
+    "imports-loader": "^0.7.1",
+    "tape": "^4.6.3",
+    "webpack": "^2.3.2"
+  }
+}
