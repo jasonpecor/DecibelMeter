@@ -163,6 +163,10 @@ export default class DecibelMeter {
 					connection.streamSource.connect(connection.analyser)
 					connection.dBAnalyser = new DecibelAnalyser(this)
 
+					connection.context.addEventListener('ended', () => {
+						this.events.dispatch('disconnect')
+					})
+
 					this._connection = connection
 				}
 
