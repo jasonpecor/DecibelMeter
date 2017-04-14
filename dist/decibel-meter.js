@@ -16,9 +16,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -261,6 +261,10 @@ var DecibelMeter = function () {
 						connection.streamSource = connection.context.createMediaStreamSource(stream);
 						connection.streamSource.connect(connection.analyser);
 						connection.dBAnalyser = new _DecibelAnalyser2.default(_this2);
+
+						connection.context.addEventListener('ended', function () {
+							_this2.events.dispatch('disconnect');
+						});
 
 						_this2._connection = connection;
 					}
