@@ -26,13 +26,13 @@ var DecibelMeter = ( function ( window, navigator, document, undefined ) {
 	
 	// audio sources
 	
-	if (!window.MediaStreamTrack) {
+	if (!navigator.mediaDevices) {
 		throw new Error('DecibelMeter: MediaStreamTrack not supported');
 		return undefined;
 	}
 	
-	if (!window.MediaStreamTrack.getSources) {
-		throw new Error('DecibelMeter: MediaStreamTrack.getSources() not supported');
+	if (!navigator.mediaDevices.enumerateDevices) {
+		throw new Error('DecibelMeter: mediaDevices.enumerateDevices() not supported');
 		return undefined;
 	}
 	
@@ -40,9 +40,9 @@ var DecibelMeter = ( function ( window, navigator, document, undefined ) {
 		sourcesIndex = {},
 		sourcesReady = false;
 	
-	MediaStreamTrack.getSources(function (srcs) {
+	navigator.mediaDevices.enumerateDevices().then(function(srcs){		
 		srcs.forEach( function (source) {
-			if (source.kind === 'audio') {
+			if (source.kind === 'audiooutput') {
 				sources.push(source);
 				sourcesIndex[source.id] = source;
 			}
@@ -56,7 +56,6 @@ var DecibelMeter = ( function ( window, navigator, document, undefined ) {
 			dispatch(meter, 'ready', [meter, sources]);
 		});
 	});
-	
 	
 	// util
 	
